@@ -13,6 +13,19 @@ const userSchema = new Schema(
       type: String,
       required: false,
     },
+    name: {
+      type: String,
+    },
+    address: {
+      type: String,
+    },
+    phoneNo: {
+      unique: true,
+      type: String,
+    },
+    image: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

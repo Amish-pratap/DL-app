@@ -4,7 +4,8 @@ import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 export const POST = async (request: any) => {
-  const { email, password } = await request.json();
+  const { email, password, name, address, phoneNo, base64Image } =
+    await request.json();
 
   await connect();
 
@@ -18,10 +19,15 @@ export const POST = async (request: any) => {
   const newUser = new User({
     email,
     password: hashedPassword,
+    name,
+    address,
+    phoneNo,
+    image: base64Image,
   });
 
   try {
     await newUser.save();
+    console.log(newUser);
     return new NextResponse("user is registered", { status: 200 });
   } catch (err: any) {
     return new NextResponse(err, {

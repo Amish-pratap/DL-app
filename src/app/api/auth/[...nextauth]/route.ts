@@ -52,6 +52,8 @@ export const authOptions: any = {
           if (!existingUser) {
             const newUser = new User({
               email: user.email,
+              name: user.name,
+              image: user.image,
             });
 
             await newUser.save();
