@@ -1,9 +1,16 @@
 import User from "@/models/User";
 import connect from "@/utils/db";
+import { getServerSession } from "next-auth/next";
 
 import { NextResponse } from "next/server";
 
 export const POST = async (request: any) => {
+  const session = await getServerSession(request);
+
+  // If no session exists, reject the request
+  if (!session) {
+    return new NextResponse("User is not authenticated", { status: 401 });
+  }
   const { email } = await request.json();
 
   if (!email) {
@@ -25,6 +32,12 @@ export const POST = async (request: any) => {
 };
 
 export const PUT = async (request: any) => {
+  const session = await getServerSession(request);
+
+  // If no session exists, reject the request
+  if (!session) {
+    return new NextResponse("User is not authenticated", { status: 401 });
+  }
   const { email, name, address, phoneNo } = await request.json();
 
   if (!email) {

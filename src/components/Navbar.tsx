@@ -7,6 +7,7 @@ import Image from "next/image";
 import carlogo from "../../public/logo/carlogo.svg";
 import homelogo from "../../public/icons/home.svg";
 import downarrow from "../../public/icons/downarrow.svg";
+import fallbackimage from "../../public/icons/fallbackuser.svg";
 
 const Navbar = () => {
   const { data: session, status: sessionStatus } = useSession();
@@ -47,7 +48,6 @@ const Navbar = () => {
               Login
             </Link>
             <Link href="/signup">
-              {" "}
               <p className="bg-white sm:p-2 p-1 rounded-md text-[12px] sm:text-[16px]">
                 Sign Up
               </p>
@@ -58,12 +58,25 @@ const Navbar = () => {
             <div className="relative cursor-pointer" onClick={toggleDropdown}>
               <div className="bg-[#879c9a] rounded-3xl  sm:w-[100px] w-[50px] sm:h-[60px] h-[30px] flex items-center justify-center ">
                 <div className="sm:w-[50px] w-[25px] sm:h-[50px] h-[25px]  rounded-full overflow-hidden bg-white ">
-                  <Image
-                    src={`data:image/jpeg;base64,${session?.user?.image}`}
-                    width={60}
-                    height={60}
-                    alt="user profile image"
-                  />
+                  {session?.user?.image &&
+                  session?.user?.image.startsWith("http") ? (
+                    <Image
+                      src={session?.user?.image || fallbackimage}
+                      alt="user image"
+                      width={200}
+                      height={200}
+                    />
+                  ) : (
+                    <Image
+                      src={
+                        `data:image/jpeg;base64,${session?.user?.image}` ||
+                        fallbackimage
+                      }
+                      alt="user image"
+                      width={200}
+                      height={200}
+                    />
+                  )}
                 </div>
                 <Image
                   src={downarrow}

@@ -3,6 +3,8 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
+import fallbackuser from "../../public/icons/fallbackuser.svg";
+
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -76,12 +78,22 @@ const UserProfile = () => {
 
   return (
     <form className="" onSubmit={handleSubmit}>
-      <Image
-        src={`data:image/jpeg;base64,${userInfo.image}`}
-        alt="user image"
-        width={200}
-        height={200}
-      />
+      {userInfo.image.startsWith("http") ? (
+        <Image
+          src={userInfo.image || fallbackuser}
+          alt="user image"
+          width={200}
+          height={200}
+        />
+      ) : (
+        <Image
+          src={`data:image/jpeg;base64,${userInfo.image}` || fallbackuser}
+          alt="user image"
+          width={200}
+          height={200}
+        />
+      )}
+
       <label>email</label>
       <h1>{email}</h1>
       <label>name</label>
