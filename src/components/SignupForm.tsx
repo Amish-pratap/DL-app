@@ -55,7 +55,6 @@ const SignupForm = () => {
       return;
     }
 
-    // Updated phone number validation
     if (!isValidPhoneNumber(phoneNo)) {
       setError("Phone number must be 10 digits");
       return;

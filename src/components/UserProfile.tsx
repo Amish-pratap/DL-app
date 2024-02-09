@@ -130,8 +130,6 @@ const UserProfile = () => {
       <button type="submit" className="bg-[#0bd42c] p-1 rounded-md">
         Save Changes
       </button>
-
-      {/* Render other user details here */}
     </form>
   );
 };

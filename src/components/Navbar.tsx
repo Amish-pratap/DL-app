@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   if (sessionStatus === "loading") {
-    return <div className="h-[40px] sm:h-[80px] bg-black text-white"></div>;
+    return <div className="h-[40px] sm:h-[80px] bg-[#29f0ad] text-white"></div>;
   }
 
   return (
@@ -109,7 +109,6 @@ const Navbar = () => {
                   >
                     Logout
                   </button>
-                  {/* Add more dropdown items here */}
                 </div>
               )}
             </div>
