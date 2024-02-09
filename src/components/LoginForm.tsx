@@ -12,7 +12,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (sessionStatus === "authenticated") {
-      router.replace("/dashboard");
+      router.replace("/quiz");
     }
   }, [sessionStatus, router]);
 
@@ -52,7 +52,7 @@ const LoginForm = () => {
 
     if (res?.error) {
       setError("Invalid email or password");
-      if (res?.url) router.replace("/dashboard");
+      if (res?.url) router.replace("/quiz");
     } else {
       setError("");
     }

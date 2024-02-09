@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Driver's License Application - Sign Up",
+  title: "Driver's Licence Application - Sign Up",
   description:
     "Join Driver's License Application today to create your account, start your driving journey, and prepare for your tests with ease.",
 };

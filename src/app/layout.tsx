@@ -9,7 +9,7 @@ import SessionProvider from "@/utils/SessionProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Driver's License Application",
+  title: "Driver's Licence Application",
   description:
     "An application empowering users to create profiles, undergo driving tests, and obtain learner's permits.",
 };

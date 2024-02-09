@@ -94,6 +94,12 @@ const Navbar = () => {
                   >
                     Profile
                   </Link>
+                  <Link
+                    href="/quiz"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  >
+                    Quiz
+                  </Link>
                   <button
                     onClick={() => {
                       signOut();

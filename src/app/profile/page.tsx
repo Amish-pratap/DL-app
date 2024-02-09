@@ -5,7 +5,7 @@ import UserProfile from "@/components/UserProfile";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Driver's License Application - Profile",
+  title: "Driver's Licence Application - Profile",
   description:
     "View and update your Driver's License Application profile. Keep your information up-to-date, track your progress, and manage your driving journey effortlessly.",
 };
