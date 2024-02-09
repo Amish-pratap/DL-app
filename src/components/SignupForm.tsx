@@ -2,6 +2,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import {
+  isValidAddress,
+  isValidEmail,
+  isValidName,
+  isValidPassword,
+  isValidPhoneNumber,
+} from "@/helpers/helper";
 
 const SignupForm = () => {
   const [error, setError] = useState("");
@@ -15,30 +22,6 @@ const SignupForm = () => {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
-  };
-
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    return emailRegex.test(email);
-  };
-
-  const isValidPhoneNumber = (phone: string) => {
-    const regex = /^\d{10}$/;
-    return regex.test(phone);
-  };
-
-  const isValidPassword = (password: string) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return regex.test(password);
-  };
-
-  const isValidName = (name: string) => {
-    return name.trim().length > 3;
-  };
-
-  const isValidAddress = (address: string) => {
-    return address.trim().length > 10;
   };
 
   const handleSubmit = async (e: any) => {

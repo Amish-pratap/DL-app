@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { isValidEmail, isValidPassword } from "@/helpers/helper";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -15,17 +16,6 @@ const LoginForm = () => {
       router.replace("/quiz");
     }
   }, [sessionStatus, router]);
-
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    return emailRegex.test(email);
-  };
-
-  const isValidPassword = (password: string) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return regex.test(password);
-  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
